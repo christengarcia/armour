@@ -18,3 +18,9 @@ def acceleration(velocity):
     return acceleration
 
 
+# Caculate force
+def force(mass, acceleration):
+    mass = float(mass)
+    force = mass * acceleration
+    return force
+
