@@ -6,9 +6,9 @@ Body Armour Certification
 
 # list of dictionaries for body armour grade types
 certification = [{'Type I': '', 'Mass': 4.4, 'Velocity': 325.5, 'Acceleration': 132438, 'Force': 583},
-               {'Type II': '', 'Mass': 9.1, 'Velocity': 393.5, 'Acceleration': 193553, 'Force': 1761},
-               {'Type III': '', 'Mass': 9.6, 'Velocity': 847, 'Acceleration': 896761, 'Force': 8609},
-               {'Type IV': '', 'Mass': 10.8, 'Velocity': 878, 'Acceleration': 963605, 'Force': 10407}]
+                 {'Type II': '', 'Mass': 9.1, 'Velocity': 393.5, 'Acceleration': 193553, 'Force': 1761},
+                 {'Type III': '', 'Mass': 9.6, 'Velocity': 847, 'Acceleration': 896761, 'Force': 8609},
+                 {'Type IV': '', 'Mass': 10.8, 'Velocity': 878, 'Acceleration': 963605, 'Force': 10407}]
 
 # Calculate acceleration
 def acceleration(velocity):
@@ -32,17 +32,23 @@ def force_newtons():
     return round(new_force/1000)
 
 
+# Match new calculation of force in newtons with certification type
+def grade_type():
+    new_force_newtons = force_newtons()
+    if certification[0]['Force'] >= new_force_newtons:
+        return 'Grade: Type I'
+    elif certification[1]['Force'] >= new_force_newtons:
+        return 'Grade: Type II'
+    elif certification[2]['Force'] >= new_force_newtons:
+        return 'Grade: Type III'
+    else:
+        return 'Grade: Type IV'
+
+
 # User prompt for mass and velocity inputs
 mass = float(input("Mass(g): "))
-velocity = float(input("Velocity(m/s): "))
+velocity = float(input("Velocity(m/s): ")) 
+print('\n')
 
-# Checks to match new calculation of force in newtons with certification types
-new_calculation = force_newtons() 
-if certification[0]['Force'] >= new_calculation:
-    print('Grade: Type I')
-elif certification[1]['Force'] >= new_calculation:
-    print('Grade: Type II')
-elif certification[2]['Force'] >= new_calculation:
-    print('Grade: Type III')
-else:
-    print('Grade: Type IV')
+new_grade_type = grade_type() # Use for "find" button 
+print(new_grade_type) # Use for printing grade type on GUI 
