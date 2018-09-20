@@ -36,3 +36,13 @@ def force_newtons():
 mass = float(input("Mass(g): "))
 velocity = float(input("Velocity(m/s): "))
 
+# Checks to match new calculation of force in newtons with certification types
+new_calculation = force_newtons() 
+if certification[0]['Force'] >= new_calculation:
+    print('Grade: Type I')
+elif certification[1]['Force'] >= new_calculation:
+    print('Grade: Type II')
+elif certification[2]['Force'] >= new_calculation:
+    print('Grade: Type III')
+else:
+    print('Grade: Type IV')
