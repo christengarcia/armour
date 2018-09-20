@@ -3,16 +3,16 @@
 """
 Body Armour Certification
 """
-import math
+
 # list of dictionaries for body armour grade types
-grade_types = [{'Type I': '', 'Mass': 4.4, 'Velocity': 325.5, 'Acceleration': 132438, 'Force': 583},
+certification = [{'Type I': '', 'Mass': 4.4, 'Velocity': 325.5, 'Acceleration': 132438, 'Force': 583},
                {'Type II': '', 'Mass': 9.1, 'Velocity': 393.5, 'Acceleration': 193553, 'Force': 1761},
                {'Type III': '', 'Mass': 9.6, 'Velocity': 847, 'Acceleration': 896761, 'Force': 8609},
-               {'Type IV': '', 'Mass': 10.8, 'Velocity': 878, 'Acceleration': 963605, 'Force': 10407},]
+               {'Type IV': '', 'Mass': 10.8, 'Velocity': 878, 'Acceleration': 963605, 'Force': 10407}]
 
 # Calculate acceleration
 def acceleration(velocity):
-    velocity = int(velocity)
+    velocity = float(velocity)
     distance = float(0.4)
     acceleration = (0.5 * velocity**2) / (distance)
     return acceleration
@@ -29,7 +29,10 @@ def force(mass, acceleration):
 def force_newtons():
     new_acceleration = acceleration(velocity)
     new_force = force(mass, new_acceleration)
-    print(math.ceil(new_force/1000))
-    return (math.ceil(new_force/1000))
+    return round(new_force/1000)
 
+
+# User prompt for mass and velocity inputs
+mass = float(input("Mass(g): "))
+velocity = float(input("Velocity(m/s): "))
 
