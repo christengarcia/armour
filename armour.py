@@ -6,7 +6,7 @@ Body Armour Certification
 from tkinter import *
 from tkinter import ttk
 
- # Caculate acceleration
+# Caculate acceleration
 def acceleration(velocity):
     velocity = float(velocity)
     distance = float(0.4)
@@ -63,8 +63,8 @@ root = Tk()
 root.title("Armour Grade Certification")
 
 # Mainframe configuration for GUI
-mainframe = ttk.Frame(root, padding="3 3 12 12")
-mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+mainframe = ttk.Frame(root, padding="5 5 5 5")# 3 3 12 12
+mainframe.grid(column=0, row=0, sticky=(N, S, E, W))
 mainframe.columnconfigure(0, weight=1)
 mainframe.rowconfigure(0, weight=1)
 
@@ -74,20 +74,32 @@ velocity_entry = StringVar()
 print_grade_type = StringVar()
 
 # Mass input box
-mass_entry = ttk.Entry(mainframe, width=7, textvariable=mass_entry)
-mass_entry.grid(column=2, row=1, sticky=(W, E))
+mass_entry = ttk.Entry(mainframe, width=6, textvariable=mass_entry, justify='center')
+mass_entry.grid(column=2, row=0, sticky=(E, W))
 
 # Velocity input box
-velocity_entry = ttk.Entry(mainframe, width=7, textvariable=velocity_entry)
-velocity_entry.grid(column=2, row=2, sticky=(W, E))
+velocity_entry = ttk.Entry(mainframe, width=6, textvariable=velocity_entry, justify='center')
+velocity_entry.grid(column=2, row=1, sticky=(E, W))
 
 # Text labels on GUI
-ttk.Label(mainframe, text="Mass(g):").grid(column=1, row=1, sticky=W)
-ttk.Label(mainframe, text="Velocity(m/s):").grid(column=1, row=2, sticky=W)
-ttk.Button(mainframe, text="Find", command=calculate).grid(column=3, row=1, sticky=W)
+ttk.Label(mainframe, text="Mass(g):", anchor=E).grid(column=1, row=0, sticky=(E, W))
+ttk.Label(mainframe, text="Velocity(m/s):", anchor=E).grid(column=1, row=1, sticky=(E, W))
+ttk.Button(mainframe, text="Find", command=calculate).grid(column=3, row=0, sticky=(E, W))
 
 # Display variable grade types on GUI
-ttk.Label(mainframe, textvariable=print_grade_type).grid(column=3, row=2, sticky=W)#output area
+ttk.Label(mainframe, textvariable=print_grade_type, anchor=N).grid(column=3, row=1, sticky=(E, W))
+
+# Configure resizing
+root.columnconfigure(0, weight = 1)
+root.rowconfigure(0, weight = 1)
+
+mainframe.columnconfigure(1, weight = 1)
+mainframe.columnconfigure(2, weight = 3)
+mainframe.columnconfigure(3, weight = 1)
+mainframe.columnconfigure(4, weight = 3)
+mainframe.columnconfigure(5, weight = 1)
+
+mainframe.rowconfigure(1, weight = 1)
 
 # Simultaneously apply padding configuration for all widgets
 for child in mainframe.winfo_children():
@@ -96,6 +108,8 @@ for child in mainframe.winfo_children():
 # Initiates calculations when "Find" button is pressed
 root.bind('<Return>', calculate)
 
+# Cursor focused on mass input at program start up
 mass_entry.focus()
-velocity_entry.focus()
+
+# Start main loop
 root.mainloop()
