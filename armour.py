@@ -30,14 +30,14 @@ def force_newtons(mass, velocity):
 
 # Match new calculation of force in newtons with certification grade type
 def grade_type(mass, velocity):
-    # Dictionary of grade types with corresponding force in newtons
+    # Grade types with corresponding force in newtons
     grade = {'Type I': 583, 'Type II': 1761, 
              'Type III': 8609, 'Type IV': 10407}
         
     # Create new_calculation variable from calling force_newtons()
     new_calculation = force_newtons(mass, velocity)
         
-    # Check to see which grade type matches with new calculation
+    # Check which grade type matches with new calculation
     if grade['Type I'] >= float(new_calculation):
         return 'Grade: Type I'    
     elif grade['Type II'] >= float(new_calculation):
@@ -47,7 +47,8 @@ def grade_type(mass, velocity):
     else:
         return 'Grade: Type IV'
 
-# Make calculations taking mass and velocity inputs from user
+
+# Take user inputs to calculate force and return a matching grade type
 def calculate(*args): 
     try:
         mass = float(mass_entry.get())
@@ -58,7 +59,8 @@ def calculate(*args):
     except ValueError:
         pass 
 
-   
+
+# Initiate Tk   
 root = Tk()
 root.title("Armour Grade Certification")
 
@@ -93,13 +95,11 @@ ttk.Label(mainframe, textvariable=print_grade_type, anchor=N).grid(column=3, row
 root.columnconfigure(0, weight = 1)
 root.rowconfigure(0, weight = 1)
 
+mainframe.rowconfigure(1, weight = 1)
 mainframe.columnconfigure(1, weight = 1)
 mainframe.columnconfigure(2, weight = 3)
 mainframe.columnconfigure(3, weight = 1)
 mainframe.columnconfigure(4, weight = 3)
-mainframe.columnconfigure(5, weight = 1)
-
-mainframe.rowconfigure(1, weight = 1)
 
 # Simultaneously apply padding configuration for all widgets
 for child in mainframe.winfo_children():
