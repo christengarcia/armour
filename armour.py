@@ -62,10 +62,10 @@ def calculate(*args):
 
 # Initiate Tk   
 root = Tk()
-root.title("Armour Grade Certification")
+root.title("Armour Grade Calculator")
 
 # Mainframe configuration for GUI
-mainframe = ttk.Frame(root, padding="5 5 5 5")# 3 3 12 12
+mainframe = ttk.Frame(root, padding="5 5 5 5")
 mainframe.grid(column=0, row=0, sticky=(N, S, E, W))
 mainframe.columnconfigure(0, weight=1)
 mainframe.rowconfigure(0, weight=1)
@@ -88,7 +88,7 @@ ttk.Label(mainframe, text="Mass(g):", anchor=E).grid(column=1, row=0, sticky=(E,
 ttk.Label(mainframe, text="Velocity(m/s):", anchor=E).grid(column=1, row=1, sticky=(E, W))
 ttk.Button(mainframe, text="Find", command=calculate).grid(column=3, row=0, sticky=(E, W))
 
-# Display variable grade types on GUI
+# Display output variable grade types on GUI
 ttk.Label(mainframe, textvariable=print_grade_type, anchor=N).grid(column=3, row=1, sticky=(E, W))
 
 # Configure resizing
@@ -108,7 +108,7 @@ for child in mainframe.winfo_children():
 # Initiates calculations when "Find" button is pressed
 root.bind('<Return>', calculate)
 
-# Cursor focused on mass input at program start up
+# Cursor focused on mass input box at program start up
 mass_entry.focus()
 
 # Start main loop
