@@ -62,6 +62,7 @@ def calculate(*args):
 
 # Initiate Tk   
 root = Tk()
+root.geometry("300x80")
 root.title("Armour Grade Calculator")
 
 # Mainframe configuration for GUI
@@ -76,20 +77,24 @@ velocity_entry = StringVar()
 print_grade_type = StringVar()
 
 # Mass input box
-mass_entry = ttk.Entry(mainframe, width=6, textvariable=mass_entry, justify='center')
+mass_entry = ttk.Entry(mainframe, width=6, textvariable=mass_entry, justify='center', font=("Verdana", 10))
 mass_entry.grid(column=2, row=0, sticky=(E, W))
 
 # Velocity input box
-velocity_entry = ttk.Entry(mainframe, width=6, textvariable=velocity_entry, justify='center')
+velocity_entry = ttk.Entry(mainframe, width=6, textvariable=velocity_entry, justify='center', font=("Verdana", 10))
 velocity_entry.grid(column=2, row=1, sticky=(E, W))
 
 # Text labels on GUI
-ttk.Label(mainframe, text="Mass(g):", anchor=E).grid(column=1, row=0, sticky=(E, W))
-ttk.Label(mainframe, text="Velocity(m/s):", anchor=E).grid(column=1, row=1, sticky=(E, W))
-ttk.Button(mainframe, text="Find", command=calculate).grid(column=3, row=0, sticky=(E, W))
+ttk.Label(mainframe, text="Mass(g):", anchor=E, font=("Verdana", 10)).grid(column=1, row=0, sticky=(E, W))
+ttk.Label(mainframe, text="Velocity(m/s):", anchor=E, font=("Verdana", 10)).grid(column=1, row=1, sticky=(E, W))
+
+# Button configurations
+find_button = ttk.Style()
+find_button.configure('find.TButton', font=('Verdana', 10))
+ttk.Button(mainframe, text="Find", style='find.TButton', command=calculate).grid(column=3, row=0, sticky=(E, W))
 
 # Display output variable grade types on GUI
-ttk.Label(mainframe, textvariable=print_grade_type, anchor=N).grid(column=3, row=1, sticky=(E, W))
+ttk.Label(mainframe, textvariable=print_grade_type, anchor=N, font=("Verdana", 10)).grid(column=3, row=1, sticky=(E, W))
 
 # Configure resizing
 root.columnconfigure(0, weight = 1)
